@@ -15,6 +15,7 @@ export default class GameBoard {
             [0,0,0,0,0,0,0,0,0,0],
         ];
         this.ships = {};
+        this.missAttacks = [];
     }
 
     //create ship instance and place it on board.
@@ -55,6 +56,7 @@ export default class GameBoard {
             return true;
         }
         
+        this.missAttacks.push(coords);
         return false;
     }
 
