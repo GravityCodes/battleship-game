@@ -6,7 +6,8 @@ export default class Ship {
     }
 
     hit(){
-        this.hits++
+        this.hits++;
+        this.isSunk(); 
     }
 
     getHits(){
@@ -21,6 +22,7 @@ export default class Ship {
         const hits = this.getHits();
 
         if(hits == this.length){
+            this.changeSunkStatus();
             return true;
         }
         return false;

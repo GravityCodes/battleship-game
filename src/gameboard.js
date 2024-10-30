@@ -28,8 +28,8 @@ export default class GameBoard {
         this.ships[coords] = ship;
 
         //Place ship object in board vertically.
-        for(let i = coords[0]; i < size; i++){
-            this.board[i][coords[1]] = coords;
+        for(let i = 0; i < size; i++){
+            this.board[coords[0] + i][coords[1]] = coords;
         }
 
     }
@@ -42,8 +42,8 @@ export default class GameBoard {
         this.ships[coords] = ship;
 
         //Place ship object in board vertically.
-        for(let i = coords[1]; i < size; i++){
-            this.board[coords[0]][i] = coords;
+        for(let i = 0; i < size; i++){
+            this.board[coords[0]][coords[1] + i] = coords;
         }
 
     }
@@ -52,7 +52,6 @@ export default class GameBoard {
     receiveAttack(coords) {
         if(this.board[coords[0]][coords[1]] != 0){
             this.ships[this.board[coords[0]][coords[1]]].hit();
-            console.log(this.ships[this.board[coords[0]][coords[1]]])
             return true;
         }
         
@@ -61,13 +60,17 @@ export default class GameBoard {
     }
 
     isAllShipsSunk() {
+
+        console.log(this.ships)
+
         for(let ship in this.ships){
             if(ship.sunk == false){
-                return true
+                console.log("hi");
+                return false
             }
         }
 
-        return false
+        return true
     }
 
     hasShipAt(coords){
