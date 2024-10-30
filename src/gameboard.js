@@ -61,11 +61,8 @@ export default class GameBoard {
 
     isAllShipsSunk() {
 
-        console.log(Object.values(this.ships))
-
         for(let ship of Object.values(this.ships)){
                 if(ship.sunk == false){
-
                 return false
             }
         }
