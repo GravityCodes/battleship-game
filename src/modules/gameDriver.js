@@ -3,7 +3,7 @@ import { displayScreen } from "../components/gameDisplay.js"
 import {renderBoard} from "../components/renderBoard.js";
 import reset from "../style/reset.css"
 import style from "../style/style.css"
-import { initGame } from "./initGame.js";
+
 
 const $htmlContainer = document.querySelector("main");
 $htmlContainer.appendChild(displayScreen());
