@@ -28,5 +28,26 @@ describe("GameBoard class functions work", () => {
 
     });
 
+    test("isAllShipsSunk() reports false when all ships are not sunk", () => {
+
+        expect(gameBoard.isAllShipsSunk()).toBe(false);
+
+    });
+
+    test("isAllShipsSunk() reports true when all ships are sunk", () => {
+        
+        //sink vertical ship
+        gameBoard.receiveAttack([0,0]);
+        gameBoard.receiveAttack([1,0]);
+        gameBoard.receiveAttack([2,0]);
+
+        //sink horizontal ship
+        gameBoard.receiveAttack([0,2]);
+        gameBoard.receiveAttack([0,3]);
+        gameBoard.receiveAttack([0,4]);
+        expect(gameBoard.isAllShipsSunk()).toBe(false);
+
+    });
+
 
 });

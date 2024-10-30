@@ -60,6 +60,16 @@ export default class GameBoard {
         return false;
     }
 
+    isAllShipsSunk() {
+        for(let ship in this.ships){
+            if(ship.sunk == false){
+                return true
+            }
+        }
+
+        return false
+    }
+
     hasShipAt(coords){
   
         return this.board[coords[0]][coords[1]] != 0 ? true : false;
