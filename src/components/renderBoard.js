@@ -5,10 +5,7 @@
 export const renderBoard = (board) => {
 
     // Get the coords of each block on the board and translate it to the screen's board.
-    const $playerBoard = document.querySelectorAll("#player-board .grid-dot");
-    
-    console.log($playerBoard)
-    
+    const $playerBoard = document.querySelectorAll("#player-board .grid-dot");    
     
     for(let i = 0; i < 10; i++){
         for(let j = 0; j< 10; j++){

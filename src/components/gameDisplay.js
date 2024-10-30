@@ -11,11 +11,18 @@ export const displayScreen = () => {
     const enemyBoard = document.createElement("div");
     enemyBoard.id = "enemy-board";
 
-    for(let i = 0; i < 100; i++){
-        const cell = document.createElement("div");
-        cell.className = "grid-dot";
+    for(let i = 0; i < 10; i++){
+        for(let j = 0; j < 10; j++){
+            const cell = document.createElement("div");
+        
+            cell.className = "grid-dot";
+            cell.classList.add("enemy");
 
-        enemyBoard.appendChild(cell);
+            cell.dataset.x = i;
+            cell.dataset.y = j;
+            enemyBoard.appendChild(cell);
+        }
+        
     }
 
     const divider = document.createElement("div");
@@ -24,11 +31,17 @@ export const displayScreen = () => {
     const playerBoard = document.createElement("div");
     playerBoard.id = "player-board";
 
-    for(let i = 0; i < 100; i++){
-        const cell = document.createElement("div");
-        cell.className = "grid-dot";
+    for(let i = 0; i < 10; i++){
+        for(let j = 0; j < 10; j++){
+            const cell = document.createElement("div");
+            cell.className = "grid-dot";
 
-        playerBoard.appendChild(cell);
+            cell.dataset.x = i;
+            cell.dataset.y = j;
+
+            playerBoard.appendChild(cell);
+        }
+        
     }
 
     gameWrapper.appendChild(title);

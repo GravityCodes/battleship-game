@@ -36,6 +36,10 @@ body {
     width: 20px;
 }
 
+.enemy {
+    cursor: pointer;
+}
+
 #divider {
     background-color: grey;
     height: 10px;
