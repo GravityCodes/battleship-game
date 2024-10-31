@@ -29,28 +29,31 @@ cpu.gameBoard.placeShipHorizontal(4,[4,4]);
 renderBoard(player.gameBoard.board);
 
 //players turn first
-let cpuTurn = false;
-let gameInPlay = true;
-const controller = new AbortController();
 
-const placeAttack = (cell) => {
-    cell.classList.add(player.Attack([cell.dataset.x, cell.dataset.y], cpu));
-    cpuTurn = true;
-    controller.abort();
-}
+let gameInPlay = true;
+let cpuTurn = false;
 
 const cpuPlaceAttack = () => {
     cpu.Attack(player);
 }
 
-cpuPlaceAttack();
-renderBoard(player.gameBoard.board);
+const placeAttack = (cell) => {
 
+    if(cpuTurn == false){
+        cell.classList.add(player.Attack([cell.dataset.x, cell.dataset.y], cpu));
+        cpuTurn = true;
+        setTimeout(() => {
+            cpuPlaceAttack();
+            renderBoard(player.gameBoard.board);
+            cpuTurn = false;
+        },2000);
+    }  
+}
 $enemyBoard.addEventListener('click', e => {
     if(e.target.id != "enemy-board"){
         placeAttack(e.target);
     }
-}, {signal: controller.signal});
+});
 
 
 
