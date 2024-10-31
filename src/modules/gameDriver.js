@@ -8,7 +8,10 @@ import style from "../style/style.css"
 const $htmlContainer = document.querySelector("main");
 $htmlContainer.appendChild(displayScreen());
 
-const enemyBoard = document.querySelector("#enemy-board");
+const $enemyBoard = document.querySelector("#enemy-board");
+const $playerBoardCells = document.querySelectorAll("#player-board .grid-dot");
+
+
 
 const player = new HumanPlayer();
 const cpu = new ComputerPlayer();
@@ -27,18 +30,32 @@ renderBoard(player.gameBoard.board);
 
 //players turn first
 let cpuTurn = false;
-
+let gameInPlay = true;
 const controller = new AbortController();
 
-
 const placeAttack = (cell) => {
-    cell.classList.add(cpu.gameBoard.receiveAttack([cell.dataset.x, cell.dataset.y]));
+    cell.classList.add(player.Attack([cell.dataset.x, cell.dataset.y], cpu));
     cpuTurn = true;
     controller.abort();
 }
 
-enemyBoard.addEventListener('click', e => {
+const cpuPlaceAttack = () => {
+    cpu.Attack(player);
+}
+
+cpuPlaceAttack();
+renderBoard(player.gameBoard.board);
+
+$enemyBoard.addEventListener('click', e => {
     if(e.target.id != "enemy-board"){
         placeAttack(e.target);
     }
 }, {signal: controller.signal});
+
+
+
+
+
+
+
+

@@ -44,7 +44,7 @@ body {
     background-color: rgb(253, 87, 87);
 }
 
-#enemy-board .false {
+.false{
     background-color: rgb(136, 136, 168);
 }
 

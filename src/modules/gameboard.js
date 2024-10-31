@@ -55,6 +55,7 @@ export default class GameBoard {
             return true;
         }
         
+        this.board[coords[0]][coords[1]] = 1;
         this.missAttacks.push(coords);
         return false;
     }

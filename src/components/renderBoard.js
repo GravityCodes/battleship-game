@@ -9,8 +9,11 @@ export const renderBoard = (board) => {
     
     for(let i = 0; i < 10; i++){
         for(let j = 0; j< 10; j++){
-            if(board[i][j] != 0){
+            if(board[i][j] != 0 && board[i][j] != 1){
                 $playerBoard[Number(`${i}${j}`)].classList.add("ship");
+            }
+            else if(board[i][j] == 1){
+                $playerBoard[Number(`${i}${j}`)].classList.add("false");
             }
         }
     }
