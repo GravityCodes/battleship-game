@@ -8,7 +8,7 @@ import style from "../style/style.css"
 const $htmlContainer = document.querySelector("main");
 $htmlContainer.appendChild(displayScreen());
 
-const enemyBoard = document.querySelectorAll("#enemy-board .grid-dot");
+const enemyBoard = document.querySelector("#enemy-board");
 
 const player = new HumanPlayer();
 const cpu = new ComputerPlayer();
@@ -26,7 +26,19 @@ cpu.gameBoard.placeShipHorizontal(4,[4,4]);
 renderBoard(player.gameBoard.board);
 
 //players turn first
+let cpuTurn = false;
 
-enemyBoard.forEach( grid => grid.addEventListener('click', () => {
-    
-}));
+const controller = new AbortController();
+
+
+const placeAttack = (cell) => {
+    cell.classList.add(cpu.gameBoard.receiveAttack([cell.dataset.x, cell.dataset.y]));
+    cpuTurn = true;
+    controller.abort();
+}
+
+enemyBoard.addEventListener('click', e => {
+    if(e.target.id != "enemy-board"){
+        placeAttack(e.target);
+    }
+}, {signal: controller.signal});

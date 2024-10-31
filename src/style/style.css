@@ -40,6 +40,14 @@ body {
     cursor: pointer;
 }
 
+#enemy-board .true {
+    background-color: rgb(253, 87, 87);
+}
+
+#enemy-board .false {
+    background-color: rgb(136, 136, 168);
+}
+
 #divider {
     background-color: grey;
     height: 10px;
