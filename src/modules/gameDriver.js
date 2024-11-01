@@ -3,7 +3,7 @@ import { displayScreen } from "../components/gameDisplay.js"
 import {renderBoard} from "../components/renderBoard.js";
 import reset from "../style/reset.css"
 import style from "../style/style.css"
-
+import { initDragDrop } from "../components/dragDrop.js";
 
 const $htmlContainer = document.querySelector("main");
 $htmlContainer.appendChild(displayScreen());
@@ -16,17 +16,10 @@ const $playerBoardCells = document.querySelectorAll("#player-board .grid-dot");
 const player = new HumanPlayer();
 const cpu = new ComputerPlayer();
 
-player.gameBoard.placeShipHorizontal(3,[0,0]);
-player.gameBoard.placeShipHorizontal(3,[0,5]);
-player.gameBoard.placeShipVertical(3,[0,9]);
-player.gameBoard.placeShipHorizontal(4,[4,4]);
-
-cpu.gameBoard.placeShipHorizontal(3,[0,0]);
-cpu.gameBoard.placeShipHorizontal(3,[0,5]);
-cpu.gameBoard.placeShipVertical(3,[0,9]);
-cpu.gameBoard.placeShipHorizontal(4,[4,4]);
     
 renderBoard(player.gameBoard.board);
+initDragDrop();
+
 
 //players turn first
 
@@ -37,16 +30,32 @@ const cpuPlaceAttack = () => {
     cpu.Attack(player);
 }
 
+const checkForWinner = () => {
+    if(player.gameBoard.isAllShipsSunk()){
+        console.log("CPU WON");
+    }
+    else if(cpu.gameBoard.isAllShipsSunk()){
+        console.log("PLAYER WON");
+
+    }
+
+    console.log("Game still going");
+}
+
 const placeAttack = (cell) => {
 
     if(cpuTurn == false){
+        console.log(cell)
         cell.classList.add(player.Attack([cell.dataset.x, cell.dataset.y], cpu));
+        
+        checkForWinner();
         cpuTurn = true;
+
         setTimeout(() => {
             cpuPlaceAttack();
             renderBoard(player.gameBoard.board);
             cpuTurn = false;
-        },2000);
+        },1500);
     }  
 }
 $enemyBoard.addEventListener('click', e => {

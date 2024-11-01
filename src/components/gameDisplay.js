@@ -1,4 +1,6 @@
-
+import battleship3 from "../images/battleship3.png";
+import battleship2 from "../images/battleship2.png";
+import battleship4 from "../images/battleship4.png";
 
 export const displayScreen = () => {
     const gameWrapper = document.createElement("div");
@@ -44,10 +46,41 @@ export const displayScreen = () => {
         
     }
 
+
+    const shipsContainer = document.createElement("div");
+    shipsContainer.id = "ship-container";
+
+    const battleship3Container = document.createElement("div");
+    battleship3Container.id = "battleship-3-container";
+    const battleship3Icon = document.createElement("img");
+    battleship3Icon.setAttribute("draggable", true);
+    battleship3Icon.src = battleship3;
+    battleship3Container.appendChild(battleship3Icon);
+
+    const battleship2Container = document.createElement("div");
+    battleship2Container.id = "battleship-2-container";
+    const battleship2Icon = document.createElement("img");
+    battleship2Icon.setAttribute("draggable", true);
+    battleship2Icon.src = battleship2;
+    battleship2Container.appendChild(battleship2Icon);
+
+
+    const battleship4Container = document.createElement("div");
+    battleship4Container.id = "battleship-4-container";
+    const battleship4Icon = document.createElement("img");
+    battleship4Icon.setAttribute("draggable", true);
+    battleship4Icon.src = battleship4;
+    battleship4Container.appendChild(battleship4Icon);
+
     gameWrapper.appendChild(title);
     gameWrapper.appendChild(enemyBoard);
     gameWrapper.appendChild(divider);
     gameWrapper.appendChild(playerBoard);
+    gameWrapper.appendChild(shipsContainer);
+
+    shipsContainer.appendChild(battleship3Container);
+    shipsContainer.appendChild(battleship2Container);
+    shipsContainer.appendChild(battleship4Container);
 
     return gameWrapper
 }

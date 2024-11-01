@@ -51,7 +51,9 @@ export default class GameBoard {
 
     receiveAttack(coords) {
         if(this.board[coords[0]][coords[1]] != 0){
+            
             this.ships[this.board[coords[0]][coords[1]]].hit();
+            console.log(this.ships[this.board[coords[0]][coords[1]]]);
             return true;
         }
         

@@ -55,3 +55,43 @@ body {
     margin: 0 auto;
     border: 2px solid rgb(89, 89, 89);
 }
+
+#ship-container {
+    height: 100px;
+    width: 350px;
+    background-color: rgb(83, 83, 253);
+    border-radius: 20px;
+    border: 4px solid rgb(38, 38, 131);
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#ship-container div {
+    background-color: rgb(38, 38, 131);
+    width: 100px;
+    height: 70px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#battleship-3-container img {
+    height: 50px;
+
+    object-fit: contain;
+}
+
+#battleship-2-container img {
+    height: 35px;
+    object-fit: contain;
+}
+
+#battleship-4-container img {
+    height: 50px;
+    object-fit: contain;
+}
