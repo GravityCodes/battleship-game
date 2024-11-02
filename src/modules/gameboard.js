@@ -22,6 +22,10 @@ export default class GameBoard {
     
     placeShipVertical(size, coords){
         
+        if(size + coords[0] > 9) {
+            throw new Error(`Ship ${size} is too large for coord ${coords}`);
+        }
+
         const ship = new Ship(size);
         
         //Place ship in ships object with the name being the coords.
@@ -35,7 +39,11 @@ export default class GameBoard {
     }
 
     placeShipHorizontal(size, coords){
-  
+        
+        if( size + coords[1] > 9) {
+            throw new Error(`Ship ${size} is too large for coord ${coords}`);
+        }
+
         const ship = new Ship(size);
         
         //Place ship in ships object with the name being the coords.
@@ -51,9 +59,10 @@ export default class GameBoard {
 
     receiveAttack(coords) {
         if(this.board[coords[0]][coords[1]] != 0){
-            
+            console.log(this.board[coords[0]][coords[1]]);
+            console.log(this.ships);
             this.ships[this.board[coords[0]][coords[1]]].hit();
-            console.log(this.ships[this.board[coords[0]][coords[1]]]);
+            this.board[coords[0]][coords[1]] = 2;
             return true;
         }
         
@@ -76,6 +85,23 @@ export default class GameBoard {
     hasShipAt(coords){
   
         return this.board[coords[0]][coords[1]] != 0 ? true : false;
+    }
+
+    clearGameBoard() {
+        this.board = [
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0],
+        ];
+        this.ships = {};
+        this.missAttacks = [];
     }
 
 }

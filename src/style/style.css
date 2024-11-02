@@ -21,19 +21,26 @@ body {
     grid-template-rows: repeat(10, 1fr);
     align-items: center;
     justify-items: center;
+    position: relative;
 }
 
 .grid-dot {
     background-color: rgb(38, 38, 131);
-    height: 20px;
-    width: 20px;
-    border-radius: 10px;
+    height: 31px;
+    width: 31px;
+    position:relative;
 }
+
+
 
 .ship {
     background-color: rgb(68, 67, 67);
     border-radius: 0;
-    width: 20px;
+    width: 30px;
+}
+
+.hit {
+    background-color: rgb(253, 87, 87);
 }
 
 .enemy {
@@ -45,7 +52,7 @@ body {
 }
 
 .false{
-    background-color: rgb(136, 136, 168);
+    background-color: rgb(3, 3, 40);
 }
 
 #divider {
@@ -70,7 +77,7 @@ body {
     align-items: center;
 }
 
-#ship-container div {
+#ship-container > div {
     background-color: rgb(38, 38, 131);
     width: 100px;
     height: 70px;
@@ -80,9 +87,15 @@ body {
     align-items: center;
 }
 
+/*
+#ship-container div img {
+    cursor:grab;
+
+}
+
+
 #battleship-3-container img {
     height: 50px;
-
     object-fit: contain;
 }
 
@@ -94,4 +107,32 @@ body {
 #battleship-4-container img {
     height: 50px;
     object-fit: contain;
+}
+
+
+.ship3 {
+    display: flex;
+    gap: 3px;
+}
+
+.ship3 div {
+    background-color: grey;
+    height: 20px;
+    width: 20px;
+}
+*/
+#buttons-wrapper {
+    margin: 0 auto;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    
+}
+
+#buttons-wrapper button {
+    width: 200px;
+    cursor: pointer;
 }

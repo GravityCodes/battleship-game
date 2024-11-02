@@ -19,12 +19,20 @@ export class HumanPlayer extends Player {
 export class ComputerPlayer extends Player {
     constructor() {
         super().gameBoard;
+        this.attacks = [];
     }
-
+    // Edit so it knows not to attack on a place it already hit.
     Attack(enemy){
-        let x = Math.floor(Math.random() * 10);
-        let y = Math.floor(Math.random() * 10);
-        return enemy.gameBoard.receiveAttack([x,y]);
+        let x = Math.floor(Math.random() * 9);
+        let y = Math.floor(Math.random() * 9);
+        
+        if(this.attacks.includes(`[${x}${y}]`) == false){
+            this.attacks.push(`[${x}${y}]`);
+            return enemy.gameBoard.receiveAttack([x,y]);
+        }
+        
+        this.Attack(enemy);
+        
      }
 
 }
